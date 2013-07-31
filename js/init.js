@@ -1,4 +1,21 @@
-function init() {
+;var FZero = FZero || {};
+FZero.drawState = {};
+FZero.gameState = {};
+FZero.gameState.last_time = -1;
+FZero.gameState.current_time = -1;
+
+var WIDTH = 400;
+var HEIGHT = 300;
+
+FZero.init = function(){
+	FZero.buildScene();
+	FZero.addObjectsToScene();
+	FZero.attachToDom();
+	//FZero.draw();
+	FZero.loop();
+}
+
+FZero.buildScene = function() {
 	var WIDTH = 400,
 		 HEIGHT = 300;
 
@@ -30,43 +47,20 @@ function init() {
 	// start the renderer
 	renderer.setSize(WIDTH, HEIGHT);
 
-	// attach the render-supplied DOM element
-	var body = document.getElementsByTagName('body')[0];
-	body.appendChild(renderer.domElement);
-
-	buildScene(scene);
-
-	renderer.render(scene, camera);
+	FZero.drawState.renderer = renderer;
+	FZero.drawState.scene = scene;
+	FZero.drawState.camera = camera;
 }
 
-function buildScene(scene) {
-	// set up the sphere vars
-	var radius = 50,
-		 segments = 16,
-		 rings = 16;
+FZero.addObjectsToScene = function() {
+	var geometry = new THREE.CubeGeometry( 100, 100, 100 );
+	var material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+	FZero.drawState.mesh = new THREE.Mesh( geometry, material );
+	FZero.drawState.scene.add(FZero.drawState.mesh);
+}
 
-	var sphereMaterial =
-	  new THREE.MeshLambertMaterial({color: 0xCC0000});
-
-	var sphere = new THREE.Mesh(
-			new THREE.SphereGeometry(
-				radius,
-				segments,
-				rings),
-			sphereMaterial);
-
-	// add the sphere to the scene
-	scene.add(sphere);
-
-	// create a point light
-	var pointLight =
-	  new THREE.PointLight(0xFFFFFF);
-
-  // set its position
-  pointLight.position.x = 10;
-  pointLight.position.y = 50;
-  pointLight.position.z = 130;
-
-  // add to the scene
-  scene.add(pointLight);
+FZero.attachToDom = function() {
+	// attach the render-supplied DOM element
+	var body = document.getElementsByTagName('body')[0];
+	body.appendChild(FZero.drawState.renderer.domElement);
 }
