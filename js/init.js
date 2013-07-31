@@ -8,11 +8,6 @@ var WIDTH = 400;
 var HEIGHT = 300;
 
 FZero.init = function(){
-	// poly-fill animation frame
-	window.requestAnimationFrame = window.requestAnimationFrame 
-		|| window.mozRequestAnimationFrame
-		|| window.webkitRequestAnimationFrame;
-
 	FZero.buildScene();
 	FZero.addObjectsToScene();
 	FZero.attachToDom();
