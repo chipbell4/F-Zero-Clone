@@ -1,4 +1,22 @@
-function init() {
+;var FZero = FZero || {};
+FZero.drawState = {};
+
+var WIDTH = 400;
+var HEIGHT = 300;
+
+FZero.init = function(){
+	// poly-fill animation frame
+	window.requestAnimationFrame = window.requestAnimationFrame 
+		|| window.mozRequestAnimationFrame
+		|| window.webkitRequestAnimationFrame;
+
+	FZero.buildScene();
+	FZero.addObjectsToScene();
+	FZero.attachToDom();
+	FZero.draw();
+}
+
+FZero.buildScene = function() {
 	var WIDTH = 400,
 		 HEIGHT = 300;
 
@@ -30,16 +48,12 @@ function init() {
 	// start the renderer
 	renderer.setSize(WIDTH, HEIGHT);
 
-	// attach the render-supplied DOM element
-	var body = document.getElementsByTagName('body')[0];
-	body.appendChild(renderer.domElement);
-
-	buildScene(scene);
-
-	renderer.render(scene, camera);
+	FZero.drawState.renderer = renderer;
+	FZero.drawState.scene = scene;
+	FZero.drawState.camera = camera;
 }
 
-function buildScene(scene) {
+FZero.addObjectsToScene = function() {
 	// set up the sphere vars
 	var radius = 50,
 		 segments = 16,
@@ -56,7 +70,7 @@ function buildScene(scene) {
 			sphereMaterial);
 
 	// add the sphere to the scene
-	scene.add(sphere);
+	FZero.drawState.scene.add(sphere);
 
 	// create a point light
 	var pointLight =
@@ -68,5 +82,11 @@ function buildScene(scene) {
   pointLight.position.z = 130;
 
   // add to the scene
-  scene.add(pointLight);
+  FZero.drawState.scene.add(pointLight);
+}
+
+FZero.attachToDom = function() {
+	// attach the render-supplied DOM element
+	var body = document.getElementsByTagName('body')[0];
+	body.appendChild(FZero.drawState.renderer.domElement);
 }
