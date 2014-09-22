@@ -2,8 +2,10 @@ class Sprite
 	constructor: (@sprite_sheet, @sprite_position, @sprite_crop) ->
 		@image = new Image
 		@image.src = @sprite_sheet
+		@alive = true
 
 	draw: ->
+		console.log 'Drawing'
 		Peach.context.drawImage(
 			@image,
 			@sprite_crop.top_left.x,
