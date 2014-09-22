@@ -1,5 +1,11 @@
 {
   "dependencies": {
     "peach.js": "^0.2.0"
+  },
+  "devDependencies": {
+    "browserify": "^5.12.0",
+    "gulp": "^3.8.8",
+    "gulp-concat": "^2.4.1",
+    "vinyl-transform": "0.0.1"
   }
 }
