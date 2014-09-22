@@ -19,3 +19,7 @@ gulp.task('browserify', function() {
 		.pipe(concat('js/fzero.min.js'))
 		.pipe(gulp.dest(''));
 });
+
+gulp.task('watch', ['default'], function() {
+	gulp.watch(['js/*.js', '!js/fzero.min.js'], ['default']);
+});
