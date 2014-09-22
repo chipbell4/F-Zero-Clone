@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "peach.js": "^0.2.0"
+    "peach.js": "0.1.*"
   },
   "devDependencies": {
     "browserify": "^5.12.0",
