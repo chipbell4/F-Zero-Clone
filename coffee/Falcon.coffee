@@ -1,4 +1,5 @@
 Sprite = require './Sprite.coffee'
+CarState = require './CarState.coffee'
 
 sprite_sheet = '/images/falcon.gif'
 
@@ -18,6 +19,10 @@ class Falcon extends Sprite
 		@sprite_size = Peach.Geometry.Point.fromCartesian(55, 50)
 		@heading = 3
 		@heading_increment = 0.07
+		@car_state = new CarState(
+			Peach.Geometry.Point.fromCartesian(0, 0)
+			0
+		)
 
 		this.moveToSpriteCoordinate(@heading)
 
@@ -52,7 +57,15 @@ class Falcon extends Sprite
 		@heading = Math.min @heading, 6
 
 	update: ->
+		# handle turn animation
 		this.doTurn()
+
+		# update state
+		@car_state.update()
+
+		# move map
+		Peach.entities[0].heading = @car_state.heading
+		Peach.entities[0].position = @car_state.position
 
 		# Set position
 		rounded_heading = Math.round(@heading)

@@ -2,6 +2,7 @@
 
 Falcon = require './Falcon.coffee'
 Map = require './Map.coffee'
+CarState = require './CarState.coffee'
 
 FZero = 
 	init: ->
