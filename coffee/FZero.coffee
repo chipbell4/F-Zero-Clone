@@ -5,7 +5,8 @@ Map = require './Map.coffee'
 
 FZero = 
 	init: ->
-		Peach.entities.push(new Map);
+		Peach.entities.push(new Map)
+		Peach.entities.push(new Falcon)
 		Peach.init('fzero-canvas')
 		Peach.start()
 

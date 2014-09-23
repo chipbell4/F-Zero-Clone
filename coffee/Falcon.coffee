@@ -1,9 +1,14 @@
 Sprite = require './Sprite.coffee'
 
 sprite_sheet = '/images/falcon.gif'
+
+sprite_size = Peach.Geometry.Point.fromCartesian(55, 50)
+
+sprite_top_left_corner = Peach.Geometry.Point.fromCartesian(400, 300)
+	.add(sprite_size.scale(0.5, 0.5).negate())
 sprite_position = new Peach.Geometry.Rectangle(
-	Peach.Geometry.Point.fromCartesian(0, 0),
-	Peach.Geometry.Point.fromCartesian(200, 200)
+	sprite_top_left_corner,
+	sprite_top_left_corner.add(sprite_size)
 )
 
 class Falcon extends Sprite
@@ -12,7 +17,7 @@ class Falcon extends Sprite
 		@sprite_origin = Peach.Geometry.Point.fromCartesian(9, 0)
 		@sprite_size = Peach.Geometry.Point.fromCartesian(55, 50)
 		@heading = 3
-		@heading_increment = 0.03
+		@heading_increment = 0.07
 
 		this.moveToSpriteCoordinate(@heading)
 
