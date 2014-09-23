@@ -19,7 +19,7 @@ class CarState
 		delta_position = velocity_vector.scale(delta_time)
 
 		@position = @position.add(delta_position)
-		@heading += @turner.current_turn_angle * delta_time
+		@heading += @turner.current_turn_angle * delta_time * velocity_vector.magnitude() / 10
 
 		@accelerator.update()
 		@turner.update()
