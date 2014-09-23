@@ -1,18 +1,17 @@
 class Map
-	constructor: ->
+	constructor: (@position)->
+		@draw_position = @position
 		@heading = 0
-		@position = Peach.Geometry.Point.fromCartesian(200, 100)
 		@image = new Image
 		@image.src = '/images/map.png'
 		@alive = true
+		@angle = 0
 
 	draw: ->
 		Peach.context.save()
-		Peach.context.translate(@position.x, @position.y)
-		Peach.context.scale(1, 0.2)
-		Peach.context.rotate(-@heading)
 		Peach.context.translate(-@position.x, -@position.y)
-		Peach.context.drawImage(@image, 0, 0, 8000, 4000)
+		Peach.context.rotate(-@heading)
+		Peach.context.drawImage(@image, @draw_position.x, @draw_position.y, 10000, 5000)
 		Peach.context.restore()
 
 	update: ->

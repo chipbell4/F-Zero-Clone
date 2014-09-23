@@ -20,8 +20,8 @@ class Falcon extends Sprite
 		@heading = 3
 		@heading_increment = 0.07
 		@car_state = new CarState(
-			Peach.Geometry.Point.fromCartesian(0, 0)
-			0
+			Peach.Geometry.Point.fromCartesian(400, 400)
+			0 #Math.PI / 2
 		)
 
 		this.moveToSpriteCoordinate(@heading)
@@ -66,6 +66,7 @@ class Falcon extends Sprite
 		# move map
 		Peach.entities[0].heading = @car_state.heading
 		Peach.entities[0].position = @car_state.position
+		Peach.entities[0].draw_position = @sprite_position.top_left
 
 		# Set position
 		rounded_heading = Math.round(@heading)
