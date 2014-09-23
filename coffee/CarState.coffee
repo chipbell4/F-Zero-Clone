@@ -6,7 +6,7 @@ degree = Math.PI / 180
 class CarState
 	constructor: (@position, @heading) ->
 		@turner = new Turner(15 * degree, degree, degree)
-		@accelerator = new Accelerator(10, 5, 0.01, 3)
+		@accelerator = new Accelerator(300, 900, 0.01, 25)
 		@alive = true
 
 	update: ->
