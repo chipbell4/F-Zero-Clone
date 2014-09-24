@@ -30,7 +30,6 @@ class Falcon extends Peach.Sprites.Sprite
 			0 #Math.PI / 2
 		)
 
-
 		@alive = true
 
 	doTurn: ->
