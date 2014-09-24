@@ -23,8 +23,6 @@ class Falcon extends Peach.Sprites.Sprite
 		@draw_size = Peach.Geometry.Point.fromCartesian(100, 100);
 		
 		# Setup the car state
-		@heading = 3
-		@heading_increment = 0.07
 		@car_state = new CarState(
 			Peach.Geometry.Point.fromCartesian(0.5, 0)
 			0 #Math.PI / 2
@@ -32,31 +30,22 @@ class Falcon extends Peach.Sprites.Sprite
 
 		@alive = true
 
-	doTurn: ->
-		#change the heading based on key input
-		if Peach.Input.state.keys['left']
-			@heading -= @heading_increment
-		if Peach.Input.state.keys['right']
-			@heading += @heading_increment
+	setTurnSprite: ->
+		turn_ratio = @car_state.turner.current_turn_angle / @car_state.turner.max_turn_angle
 
-		# always adjust back to the center
-		if @heading > 3 and not Peach.Input.state.keys['right'] and not Peach.Input.state.keys['left']
-			@heading -= @heading_increment
-		else if @heading < 3 and not Peach.Input.state.keys['left'] and not Peach.Input.state.keys['right']
-			@heading += @heading_increment
+		# scale and shift to our array coordinates
+		raw_frame_position = turn_ratio * 3 + 3
 
-		# clamp to range
-		@heading = Math.max 0, @heading
-		@heading = Math.min @heading, 6
+		@current_sprite_coordinates = Peach.Geometry.Point.fromCartesian(
+			Math.round(raw_frame_position),
+			0
+		)
 
 	update: ->
 		# handle turn animation
-		@doTurn()
+		@setTurnSprite()
 
 		# update state
 		@car_state.update()
-
-		# Set position
-		@current_sprite_coordinates = Peach.Geometry.Point.fromCartesian(Math.round(@heading), 0)
 
 module.exports = Falcon;
