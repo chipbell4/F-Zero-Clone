@@ -12,7 +12,7 @@ class CarState
 	update: ->
 		velocity_vector = Peach.Geometry.Point.fromPolar(
 			@accelerator.current_speed,
-			@heading
+			@heading + Math.PI / 2
 		);
 
 		delta_time = Peach.gameState.frameTime / 1000.0
