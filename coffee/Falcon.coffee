@@ -1,4 +1,3 @@
-Sprite = require './Sprite.coffee'
 CarState = require './CarState.coffee'
 
 sprite_sheet = '/images/falcon.gif'
@@ -12,11 +11,18 @@ sprite_position = new Peach.Geometry.Rectangle(
 	sprite_top_left_corner.add(sprite_size)
 )
 
-class Falcon extends Sprite
+class Falcon extends Peach.Sprites.Sprite
 	constructor: ->
-		# Set the sprite origin
-		@sprite_origin = Peach.Geometry.Point.fromCartesian(9, 0)
-		@sprite_size = Peach.Geometry.Point.fromCartesian(55, 50)
+		super(
+			'/images/falcon.gif',
+			Peach.Geometry.Point.fromCartesian(9, 0),
+			Peach.Geometry.Point.fromCartesian(55, 50)
+		)
+
+		# draw the car a little larger
+		@draw_size = Peach.Geometry.Point.fromCartesian(100, 100);
+		
+		# Setup the car state
 		@heading = 3
 		@heading_increment = 0.07
 		@car_state = new CarState(
@@ -24,20 +30,8 @@ class Falcon extends Sprite
 			0 #Math.PI / 2
 		)
 
-		this.moveToSpriteCoordinate(@heading)
 
-		super('/images/falcon.gif', sprite_position, @sprite_crop)
-
-	moveToSpriteCoordinate: (i) ->
-		x_movement = Peach.Geometry.Point.fromCartesian(@sprite_size.x, 0).scale(i);
-
-		crop_location = @sprite_origin.add(x_movement)
-		crop_corner = crop_location.add(@sprite_size)
-
-		@sprite_crop = new Peach.Geometry.Rectangle(
-			crop_location
-			crop_corner
-		)
+		@alive = true
 
 	doTurn: ->
 		#change the heading based on key input
@@ -58,19 +52,12 @@ class Falcon extends Sprite
 
 	update: ->
 		# handle turn animation
-		this.doTurn()
+		@doTurn()
 
 		# update state
 		@car_state.update()
 
-		# move map
-		console.log @car_state.position
-		Peach.entities[0].heading = @car_state.heading
-		Peach.entities[0].position = @car_state.position
-		Peach.entities[0].draw_position = @sprite_position.top_left
-
 		# Set position
-		rounded_heading = Math.round(@heading)
-		this.moveToSpriteCoordinate(rounded_heading)
+		@current_sprite_coordinates = Peach.Geometry.Point.fromCartesian(Math.round(@heading), 0)
 
 module.exports = Falcon;
