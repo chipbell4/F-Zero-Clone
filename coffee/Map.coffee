@@ -11,11 +11,12 @@ class Map
 
 	draw: ->
 		Peach.context.save()
-		Peach.context.translate(100, 50)
+		p = Peach.Geometry.Point.fromCartesian(100, 50)
+		Peach.context.translate(p.x, p.y)
 		Peach.context.rotate(@angle)
 		#Peach.context.translate(-@draw_position.x, @draw_position.y)
 		#Peach.context.drawImage(@image, 0, 0, 10000, 5000)
-		Peach.context.drawImage(@image, 0, 0, 200, 100)
+		Peach.context.drawImage(@image, -100 + 50, -50 + 20, 200, 100)
 		Peach.context.restore()
 
 		@angle += 0.003
