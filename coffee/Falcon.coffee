@@ -52,7 +52,7 @@ class Falcon extends Peach.Sprites.Sprite
 		@car_state.update()
 
 		# set the map parameters
-		Peach.entities[0].draw_position = @draw_position.add(@draw_size.scale(0.5))
+		Peach.entities[0].draw_position = @draw_position.add(@draw_size)
 		Peach.entities[0].heading = @car_state.heading
 		Peach.entities[0].world_position = @car_state.position
 
