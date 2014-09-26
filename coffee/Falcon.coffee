@@ -19,6 +19,8 @@ class Falcon extends Peach.Sprites.Sprite
 			Peach.Geometry.Point.fromCartesian(55, 50)
 		)
 
+		@draw_position = sprite_top_left_corner
+
 		# draw the car a little larger
 		@draw_size = Peach.Geometry.Point.fromCartesian(100, 100);
 		
