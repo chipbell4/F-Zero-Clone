@@ -1,10 +1,13 @@
 class Accelerator
-	constructor: (@max_speed, @initial_acceleration, @acceration_falloff, @deceleration_factor) ->
+	constructor: (@max_speed, @acceleration_fallof, @deceleration_factor) ->
 		@current_speed = 0
 		@alive = true
+
+	current_acceleration: ->
+		return @acceleration_fallof * (@max_speed - @current_speed)
 	
 	accelerate: (time_step) ->
-		@current_speed += time_step * @initial_acceleration * Math.exp( -@acceration_falloff * @current_speed)
+		@current_speed += time_step * @current_acceleration()
 		@current_speed = Math.min(@current_speed, @max_speed)
 
 	decelerate: (time_step) ->

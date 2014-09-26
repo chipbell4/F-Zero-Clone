@@ -6,7 +6,7 @@ degree = Math.PI / 180
 class CarState
 	constructor: (@position, @heading) ->
 		@turner = new Turner(15 * degree, 12 * degree, 15 * degree)
-		@accelerator = new Accelerator(300, 900, 0.01, 25)
+		@accelerator = new Accelerator(1500, 50, 500)
 		@alive = true
 
 	update: ->
@@ -23,6 +23,8 @@ class CarState
 
 		@accelerator.update()
 		@turner.update()
+
+		console.log @position
 
 	draw: ->
 		console.log @position
