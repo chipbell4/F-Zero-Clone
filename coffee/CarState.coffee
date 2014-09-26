@@ -5,7 +5,7 @@ degree = Math.PI / 180
 
 class CarState
 	constructor: (@position, @heading) ->
-		@turner = new Turner(15 * degree, 12 * degree, 15 * degree)
+		@turner = new Turner(50 * degree, 500, 25 * degree, 1500, 0.00001)
 		@accelerator = new Accelerator(1500, 50, 500)
 		@alive = true
 
@@ -19,16 +19,13 @@ class CarState
 		delta_position = velocity_vector.scale(delta_time)
 
 		@position = @position.add(delta_position)
-		@heading += @turner.current_turn_angle * delta_time * velocity_vector.magnitude() / 10
+		@heading += @turner.current_turn_angle * delta_time * velocity_vector.magnitude()
 
 		@accelerator.update()
+
+		@turner.velocity = velocity_vector.magnitude()
 		@turner.update()
 
-		console.log @position
-
 	draw: ->
-		console.log @position
-		console.log @heading
-
 
 module.exports = CarState
