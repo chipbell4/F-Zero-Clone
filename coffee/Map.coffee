@@ -10,9 +10,10 @@ class Map
 
 	draw: ->
 		Peach.context.save()
+		Peach.context.scale(1, 0.5)
 		Peach.context.rotate(-@heading)
 		Peach.context.translate(@world_position.x, @world_position.y)
-		Peach.context.drawImage(@image, 0, 0, 10000, 5000)
+		Peach.context.drawImage(@image, -@draw_position.x, -@draw_position.y, 10000, 5000)
 		Peach.context.restore()
 
 	update: ->
