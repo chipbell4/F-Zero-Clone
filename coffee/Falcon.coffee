@@ -6,9 +6,10 @@ sprite_size = Peach.Geometry.Point.fromCartesian(55, 50)
 
 sprite_top_left_corner = Peach.Geometry.Point.fromCartesian(400, 300)
 	.add(sprite_size.scale(0.5, 0.5).negate())
+sprite_draw_size = sprite_size.scale(1.5)
 sprite_position = new Peach.Geometry.Rectangle(
 	sprite_top_left_corner,
-	sprite_top_left_corner.add(sprite_size)
+	sprite_top_left_corner.add(sprite_draw_size)
 )
 
 class Falcon extends Peach.Sprites.Sprite
@@ -22,12 +23,12 @@ class Falcon extends Peach.Sprites.Sprite
 		@draw_position = sprite_top_left_corner
 
 		# draw the car a little larger
-		@draw_size = Peach.Geometry.Point.fromCartesian(100, 100);
+		@draw_size = sprite_draw_size
 		
 		# Setup the car state
 		@car_state = new CarState(
 			Peach.Geometry.Point.fromCartesian(0.5, 0)
-			0 #Math.PI / 2
+			Math.PI / 2
 		)
 
 		@alive = true
