@@ -6,7 +6,7 @@ sprite_size = Peach.Geometry.Point.fromCartesian(55, 50)
 
 sprite_top_left_corner = Peach.Geometry.Point.fromCartesian(400, 300)
 	.add(sprite_size.scale(0.5, 0.5).negate())
-sprite_draw_size = sprite_size.scale(1.5)
+sprite_draw_size = sprite_size.scale(1.8)
 sprite_position = new Peach.Geometry.Rectangle(
 	sprite_top_left_corner,
 	sprite_top_left_corner.add(sprite_draw_size)
