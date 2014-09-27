@@ -27,7 +27,7 @@ class Falcon extends Peach.Sprites.Sprite
 		
 		# Setup the car state
 		@car_state = new CarState(
-			Peach.Geometry.Point.fromCartesian(0.5, 0)
+			Peach.Geometry.Point.fromCartesian(-7500, -1250)
 			Math.PI / 2
 		)
 
