@@ -15,22 +15,8 @@ class Map
 		Peach.context.rotate(-@heading)
 		Peach.context.translate(@world_position.x, @world_position.y)
 		Peach.context.drawImage(@image, 0, 0, 15000, 7500)
-		@axes()
 		Peach.context.restore()
 
 	update: ->
-
-	axes: ->
-		Peach.Primitive.line(
-			Peach.Geometry.Point.Origin,
-			Peach.Geometry.Point.fromCartesian(100, 0),
-			'#0000ff',
-		)
-		Peach.Primitive.line(
-			Peach.Geometry.Point.Origin,
-			Peach.Geometry.Point.fromCartesian(0, 100),
-			'#0000ff',
-		)
-
 
 module.exports = Map
