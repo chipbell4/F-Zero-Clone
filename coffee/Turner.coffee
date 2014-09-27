@@ -13,13 +13,7 @@ class Turner
 			return slope * @velocity + theta_intercept
 
 	straighten: (delta_time) ->
-		if @current_turn_angle < 0
-			@current_turn_angle += delta_time * @turn_rate_factor
-		else if @current_turn_angle > 0
-			@current_turn_angle -= delta_time * @turn_rate_factor
-
-		if Math.abs(@current_turn_angle) < @turn_rate_factor
-			@current_turn_angle = 0
+		@current_turn_angle = 0
 
 	update: ->
 		delta_time = Peach.gameState.frameTime / 1000;
