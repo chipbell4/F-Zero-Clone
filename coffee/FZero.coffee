@@ -1,4 +1,5 @@
 FZeroMap = require './FZeroMap.coffee'
+Falcon = require './Falcon.coffee'
 
 FZero = 
 	renderer: null
@@ -32,6 +33,7 @@ FZero =
 
 		# Setup the scene
 		@entities.push(new FZeroMap)
+		@entities.push(new Falcon)
 		entity.addToScene(@scene) for entity in @entities
 
 		# Animate
