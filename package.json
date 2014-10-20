@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "three": "^0.66.4"
+    "three": "^0.66.4",
+    "threex.keyboardstate": "https://github.com/jeromeetienne/threex.keyboardstate.git"
   },
   "devDependencies": {
     "browserify": "^5.12.0",
