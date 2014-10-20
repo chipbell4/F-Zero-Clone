@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "peach.js": "chipbell4/peach.js#develop"
+    "three": "^0.66.4"
   },
   "devDependencies": {
     "browserify": "^5.12.0",
