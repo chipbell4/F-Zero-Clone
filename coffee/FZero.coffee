@@ -1,3 +1,5 @@
+FZeroMap = require './FZeroMap.coffee'
+
 FZero = 
 	renderer: null
 	scene: null
@@ -28,10 +30,11 @@ FZero =
 
 		@scene = new THREE.Scene()
 
-		plane = new THREE.Mesh(new THREE.PlaneGeometry(300, 300), new THREE.MeshNormalMaterial())
-		plane.overdraw = true
-		@scene.add(plane)
+		# Setup the scene
+		@entities.push(new FZeroMap)
+		entity.addToScene(@scene) for entity in @entities
 
+		# Animate
 		@animate()
 
 window.FZero = FZero
