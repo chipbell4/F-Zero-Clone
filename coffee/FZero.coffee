@@ -1,5 +1,6 @@
 FZeroMap = require './FZeroMap.coffee'
-Falcon = require './Falcon.coffee'
+Car = require './Car.coffee'
+ChaseCamera = require './ChaseCamera.coffee'
 
 FZero = 
 	renderer: null
@@ -24,17 +25,16 @@ FZero =
 		@renderer.setSize(window.innerWidth, window.innerHeight)
 		document.body.appendChild(@renderer.domElement)
 
-		@camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000)
-		@camera.position.y = -450
-		@camera.position.z = 400
-		@camera.rotation.x = 45 * (Math.PI / 180)
-
-		@scene = new THREE.Scene()
-
 		# Setup the scene
+		@scene = new THREE.Scene()
+		falcon = new Car
+		chase_camera = new ChaseCamera(falcon, 50, 25)
 		@entities.push(new FZeroMap)
-		@entities.push(new Falcon)
+		@entities.push(falcon)
+		@entities.push(chase_camera)
 		entity.addToScene(@scene) for entity in @entities
+
+		@camera = chase_camera.internal_camera
 
 		# Animate
 		@animate()
