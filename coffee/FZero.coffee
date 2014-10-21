@@ -1,16 +1,46 @@
-# Assuming Peach is defined globally
-
-Falcon = require './Falcon.coffee'
-Map = require './Map.coffee'
-
-falcon = new Falcon
-map = new Map
+FZeroMap = require './FZeroMap.coffee'
+Car = require './Car.coffee'
+ChaseCamera = require './ChaseCamera.coffee'
 
 FZero = 
+	renderer: null
+	scene: null
+	camera: null
+	keyboard: null
+	last_time: null
+	entities: []
+	animate: ->
+		time_diff = (+new Date()) - @last_time
+		
+		# Render the scene
+		@renderer.render(@scene, @chase_camera.internal_camera)
+
+		# Update state for each object
+		item.update() for item in @entities
+
+		# Call the animate function again, with the correct invocation context
+		requestAnimationFrame(@animate.bind(this))
+
 	init: ->
-		Peach.entities.push(map)
-		Peach.entities.push(falcon)
-		Peach.init('fzero-canvas')
-		Peach.start()
+		@renderer = new THREE.WebGLRenderer()
+		@renderer.setSize(window.innerWidth, window.innerHeight)
+		document.body.appendChild(@renderer.domElement)
+
+		# Create a keyboard listener
+		@keyboard = new THREEx.KeyboardState
+
+		# Setup the scene
+		@scene = new THREE.Scene()
+		falcon = new Car
+		chase_camera = new ChaseCamera(falcon, 50, 25)
+		@entities.push(new FZeroMap)
+		@entities.push(falcon)
+		@entities.push(chase_camera)
+		entity.addToScene(@scene) for entity in @entities
+
+		@chase_camera = chase_camera
+
+		# Animate
+		@animate()
 
 window.FZero = FZero
