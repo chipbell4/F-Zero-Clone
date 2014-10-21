@@ -11,7 +11,7 @@ class Car
 		obj = 
 			map: THREE.ImageUtils.loadTexture('/images/falcon.gif')
 		@plane = new THREE.Mesh(
-			new THREE.PlaneGeometry(10, 10),
+			new THREE.PlaneGeometry(3, 2),
 			new THREE.MeshBasicMaterial(obj)
 		)
 		@plane.overdraw = true
