@@ -8,9 +8,11 @@ class Car
 		@velocity = 0
 
 	addToScene: (scene) ->
+		obj = 
+			map: THREE.ImageUtils.loadTexture('/images/falcon.gif')
 		@plane = new THREE.Mesh(
-			new THREE.PlaneGeometry(50, 50),
-			new THREE.MeshBasicMaterial()
+			new THREE.PlaneGeometry(10, 10),
+			new THREE.MeshBasicMaterial(obj)
 		)
 		@plane.overdraw = true
 		scene.add(@plane)
