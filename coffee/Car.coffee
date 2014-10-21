@@ -16,17 +16,15 @@ class Car
 		scene.add(@plane)
 
 	update: ->
-		@plane.lookAt(FZero.camera.position)
 
 		if FZero.keyboard.pressed('left')
-			@heading -= 0.05
+			@heading += 0.05
 		
 		if FZero.keyboard.pressed('right')
-			@heading += 0.05
+			@heading -= 0.05
 
 		if FZero.keyboard.pressed('up')
 			@velocity += 0.1
-			console.log @velocity
 		else
 			@velocity -= 0.05
 			@velocity = Math.max(0, @velocity)
@@ -34,5 +32,10 @@ class Car
 		velocity_vector = new THREE.Vector3(@velocity, 0, 0).applyAxisAngle(new THREE.Vector3(0, 0, 1), @heading)
 
 		@position = @position.add(velocity_vector)
+		@plane.position = @position
+
+		@plane.rotation.order = 'ZYX'
+		@plane.rotation.z = @heading
+		@plane.rotation.y = -Math.atan2(FZero.chase_camera.chase_distance, FZero.chase_camera.chase_height);
 
 module.exports = Car
