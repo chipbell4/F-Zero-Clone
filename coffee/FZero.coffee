@@ -6,6 +6,7 @@ FZero =
 	renderer: null
 	scene: null
 	camera: null
+	keyboard: null
 	last_time: null
 	entities: []
 	animate: ->
@@ -24,6 +25,9 @@ FZero =
 		@renderer = new THREE.WebGLRenderer()
 		@renderer.setSize(window.innerWidth, window.innerHeight)
 		document.body.appendChild(@renderer.domElement)
+
+		# Create a keyboard listener
+		@keyboard = new THREEx.KeyboardState
 
 		# Setup the scene
 		@scene = new THREE.Scene()
