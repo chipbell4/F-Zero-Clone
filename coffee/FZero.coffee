@@ -13,7 +13,7 @@ FZero =
 		time_diff = (+new Date()) - @last_time
 		
 		# Render the scene
-		@renderer.render(@scene, @camera)
+		@renderer.render(@scene, @chase_camera.internal_camera)
 
 		# Update state for each object
 		item.update() for item in @entities
@@ -38,7 +38,7 @@ FZero =
 		@entities.push(chase_camera)
 		entity.addToScene(@scene) for entity in @entities
 
-		@camera = chase_camera.internal_camera
+		@chase_camera = chase_camera
 
 		# Animate
 		@animate()
