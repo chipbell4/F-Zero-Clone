@@ -32,7 +32,7 @@ FZero =
 		# Setup the scene
 		@scene = new THREE.Scene()
 		falcon = new Car
-		chase_camera = new ChaseCamera(falcon, 50, 25)
+		chase_camera = new ChaseCamera(falcon, 20, 10, 10)
 		@entities.push(new FZeroMap)
 		@entities.push(falcon)
 		@entities.push(chase_camera)
