@@ -1,1 +1,3 @@
-console.log('Hello world');
+var GameManager = require('./GameManager');
+
+GameManager.start();
