@@ -1,7 +1,16 @@
+var PIXI = require('pixi');
+var stage = null;
+var renderer = null;
 var lastTimestamp = null;
 var entities = [];
 
 module.exports = {
+  init: function(dimensions) {
+    stage = new PIXI.Stage(0xffffff);
+    renderer = PIXI.autoDetectRenderer(dimensions.width, dimensions.height);
+    document.body.appendChild(renderer.view);
+  },
+
   addEntity: function(entity) {
     entities.push(entity);
   },
