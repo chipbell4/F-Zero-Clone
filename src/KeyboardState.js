@@ -27,8 +27,6 @@ module.exports = {
     }
 
     this[direction] = true;
-
-    console.log(this);
   },
 
   onKeyUp: function(event) {
