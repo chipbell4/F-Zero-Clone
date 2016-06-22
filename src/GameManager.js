@@ -1,4 +1,4 @@
-var PIXI = require('pixi');
+var PIXI = require('pixi.js');
 var stage = null;
 var renderer = null;
 var lastTimestamp = null;
