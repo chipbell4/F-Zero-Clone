@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "browserify src/app.js > bundled.js"
+    "start": "browserify src/app.js > bundled.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,6 @@
     "browserify": "^13.0.0"
   },
   "dependencies": {
-    "pixi": "^0.3.1"
+    "pixi.js": "^3.0.11"
   }
 }
