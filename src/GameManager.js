@@ -7,6 +7,7 @@ var entities = [];
 module.exports = {
   init: function(dimensions) {
     stage = new PIXI.Stage(0xffffff);
+    window.stage = stage;
     renderer = PIXI.autoDetectRenderer(dimensions.width, dimensions.height);
     document.body.appendChild(renderer.view);
   },
@@ -45,6 +46,8 @@ module.exports = {
 
     // Append new children
     entities.concat(newEntities);
+
+    renderer.render(stage);
 
     // Try to animate again
     requestAnimationFrame(this.animate.bind(this));
