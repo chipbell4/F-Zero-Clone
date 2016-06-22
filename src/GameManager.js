@@ -13,6 +13,7 @@ module.exports = {
 
   addEntity: function(entity) {
     entities.push(entity);
+    stage.addChild(entity.sprite);
   },
 
   start: function() {
@@ -27,9 +28,8 @@ module.exports = {
     lastTimestamp = timestamp;
 
     // filter out "dead" entities
-    entities = entities.filter(function(entity) {
-      return entity.isAlive;
-    });
+    entities.filter(entity => !entity.isAlive).forEach(entity => stage.remove(entity.sprite));
+    entities = entities.filter(entity => entity.isAlive);
 
     // run the "update" method for each entity, allowing them to push to entities
     var newEntities = [];
