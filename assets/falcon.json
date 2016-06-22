@@ -2,46 +2,46 @@
 
 "forward.png":
 {
-	"frame": {"x":151,"y":1,"w":46,"h":29},
+	"frame": {"x":0,"y":0,"w":48,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":3,"w":46,"h":29},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":32},
 	"sourceSize": {"w":48,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "left1.png":
 {
-	"frame": {"x":1,"y":1,"w":48,"h":29},
+	"frame": {"x":48,"y":0,"w":48,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w":48,"h":29},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":32},
 	"sourceSize": {"w":48,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "left2.png":
 {
-	"frame": {"x":51,"y":1,"w":48,"h":29},
+	"frame": {"x":96,"y":0,"w":48,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w":48,"h":29},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":32},
 	"sourceSize": {"w":48,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "left3.png":
 {
-	"frame": {"x":101,"y":1,"w":48,"h":29},
+	"frame": {"x":144,"y":0,"w":48,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":3,"w":48,"h":29},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":32},
 	"sourceSize": {"w":48,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 },
 "left4.png":
 {
-	"frame": {"x":199,"y":1,"w":46,"h":28},
+	"frame": {"x":192,"y":0,"w":48,"h":32},
 	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":1,"y":4,"w":46,"h":28},
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":32},
 	"sourceSize": {"w":48,"h":32},
 	"pivot": {"x":0.5,"y":0.5}
 }},
@@ -50,8 +50,8 @@
 	"version": "1.0",
 	"image": "falcon.png",
 	"format": "RGBA8888",
-	"size": {"w":246,"h":31},
+	"size": {"w":240,"h":32},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:19061153aa880ffd2556c95b1149d8d1:273094e4ddc21208279108dd9e4b1670:e14432f69388dabd687db9a6043ed480$"
+	"smartupdate": "$TexturePacker:SmartUpdate:74d5a4ea0ed2fe0463b5d202cfaa448b:273094e4ddc21208279108dd9e4b1670:e14432f69388dabd687db9a6043ed480$"
 }
 }
